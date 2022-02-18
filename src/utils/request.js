@@ -8,7 +8,7 @@ axios.defaults.timeout = 5000
 axios.defaults.withCredentials= true
 axios.defaults.xsrfHeaderName= xsrfHeaderName
 axios.defaults.xsrfCookieName= xsrfHeaderName
-
+axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
 // 认证类型
 const AUTH_TYPE = {
   BEARER: 'Bearer',

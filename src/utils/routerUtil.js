@@ -1,8 +1,6 @@
-import routerMap from '@/router/async/router.map'
 import {mergeI18nFromRoutes} from '@/utils/i18n'
 import Router from 'vue-router'
 import deepMerge from 'deepmerge'
-import basicOptions from '@/router/async/config.async'
 
 //应用配置
 let appOptions = {
@@ -20,70 +18,6 @@ function setAppOptions(options) {
   appOptions.router = router
   appOptions.store = store
   appOptions.i18n = i18n
-}
-
-/**
- * 根据 路由配置 和 路由组件注册 解析路由
- * @param routesConfig 路由配置
- * @param routerMap 本地路由组件注册配置
- */
-function parseRoutes(routesConfig, routerMap) {
-  let routes = []
-  routesConfig.forEach(item => {
-    // 获取注册在 routerMap 中的 router，初始化 routeCfg
-    let router = undefined, routeCfg = {}
-    if (typeof item === 'string') {
-      router = routerMap[item]
-      routeCfg = {path: (router && router.path) || item, router: item}
-    } else if (typeof item === 'object') {
-      router = routerMap[item.router]
-      routeCfg = item
-    }
-    if (!router) {
-      console.warn(`can't find register for router ${routeCfg.router}, please register it in advance.`)
-      router = typeof item === 'string' ? {path: item, name: item} : item
-    }
-    // 从 router 和 routeCfg 解析路由
-    const meta = {
-      authority: router.authority,
-      icon: router.icon,
-      page: router.page,
-      link: router.link,
-      params: router.params,
-      query: router.query,
-      ...router.meta
-    }
-    const cfgMeta = {
-      authority: routeCfg.authority,
-      icon: routeCfg.icon,
-      page: routeCfg.page,
-      link: routeCfg.link,
-      params: routeCfg.params,
-      query: routeCfg.query,
-      ...routeCfg.meta
-    }
-    Object.keys(cfgMeta).forEach(key => {
-      if (cfgMeta[key] === undefined || cfgMeta[key] === null || cfgMeta[key] === '') {
-        delete cfgMeta[key]
-      }
-    })
-    Object.assign(meta, cfgMeta)
-    const route = {
-      path: routeCfg.path || router.path || routeCfg.router,
-      name: routeCfg.name || router.name,
-      component: router.component,
-      redirect: routeCfg.redirect || router.redirect,
-      meta: {...meta, authority: meta.authority || '*'}
-    }
-    if (routeCfg.invisible || router.invisible) {
-      route.meta.invisible = true
-    }
-    if (routeCfg.children && routeCfg.children.length > 0) {
-      route.children = parseRoutes(routeCfg.children, routerMap)
-    }
-    routes.push(route)
-  })
-  return routes
 }
 
 /**
@@ -267,4 +201,4 @@ function loadGuards(guards, options) {
   })
 }
 
-export {parseRoutes, loadRoutes, formatAuthority, getI18nKey, loadGuards, deepMergeRoutes, formatRoutes, setAppOptions}
+export {loadRoutes, formatAuthority, getI18nKey, loadGuards, deepMergeRoutes, formatRoutes, setAppOptions}

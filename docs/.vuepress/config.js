@@ -3,10 +3,10 @@ module.exports = {
   description: 'Vue Antd Admin',
   base: '/vue-antd-admin-docs/',
   head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }]
+    ['link', { rel: 'icon', href: 'http://admin.tinaroot.cn/favicon.ico' }]
   ],
   themeConfig: {
-    logo: '/logo.png',
+    logo: 'http://admin.tinaroot.cn/favicon.ico',
     repo: 'iczer/vue-antd-admin',
     docsDir: 'docs',
     editLinks: true,
