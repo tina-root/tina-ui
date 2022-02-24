@@ -8,39 +8,46 @@
       </div>
       <div>
         <p>
+        imageWidth
           <a-tag color="pink">
-            imageWidth {{ relust.imageWidth }}
+             {{ relust.imageWidth }}
           </a-tag>
         </p>
         <p>
+        imageHeight
           <a-tag color="pink">
-            imageHeight {{ relust.imageHeight }}
+             {{ relust.imageHeight }}
           </a-tag>
         </p>
 
         <p>
+        shootingTime
           <a-tag color="orange">
-            shootingTime {{ relust.shootingTime }}
+             {{ relust.shootingTime }}
           </a-tag>
         </p>
         <p>
+        equipment
           <a-tag color="green">
-            equipment {{ relust.equipment }}
+             {{ relust.equipment }}
           </a-tag>
         </p>
         <p>
+         lng,lat
           <a-tag color="cyan">
-            lng,lat {{ relust.lng }} {{ relust.lat }}
+           {{ relust.lng }} {{ relust.lat }}
           </a-tag>
         </p>
         <p>
+        address
           <a-tag color="blue">
-            address {{ relust.address }}
+             {{ relust.address }}
           </a-tag>
         </p>
         <p>
+        error
           <a-tag color="red">
-            error{{ relust.msg }}
+            {{ relust.msg }}
           </a-tag>
         </p>
 
