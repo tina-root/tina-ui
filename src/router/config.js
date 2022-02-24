@@ -150,9 +150,9 @@ const options = {
                     component: PageView,
                     children: [
                         {
-                            path: 'project',
-                            name: '项目列表',
-                            component: () => import('@/pages/list/ProjectList'),
+                            path: 'imagesRecognition',
+                            name: '获取图片信息',
+                            component: () => import('@/pages/images/ImagesRecognition'),
                         }
                     ]
                 }
