@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import {aHolidayScheduleClosestToToday, holidayArrangement} from '@/services/date/takeAHoliday'
+import {schedule} from '@/services/date/takeAHoliday'
 
 const columns = [{
     title: '日期',
@@ -40,21 +40,15 @@ export default {
         }
     },
     created() {
-        this.getHolidayArrangement()
-        this.getNotice()
+        this.schedule()
     },
     methods: {
-        getNotice() {
-            aHolidayScheduleClosestToToday().then(reslut => {
-                if (reslut.data.code == 0) {
-                    this.notice = reslut.data.tts
-                    this.desc = this.notice
-                }
-            })
-        },
-        getHolidayArrangement() {
-            holidayArrangement().then(reslut => {
-                this.holidayArrangementData=reslut.data
+        schedule() {
+            schedule().then(reslut => {
+                console.log(reslut.data.data.holiday)
+                this.notice=reslut.data.data.holiday
+                this.desc = this.notice
+                this.holidayArrangementData=reslut.data.data.schedule
             })
         }
     }

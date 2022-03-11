@@ -97,6 +97,21 @@ const options = {
                     ]
                 },
                 {
+                    path: 'images',
+                    name: '图片工具',
+                    meta: {
+                        icon: 'picture'
+                    },
+                    component: PageView,
+                    children: [
+                        {
+                            path: 'imagesRecognition',
+                            name: '获取图片信息',
+                            component: () => import('@/pages/images/ImagesRecognition'),
+                        }
+                    ]
+                },
+                {
                     path: 'convenienceQuery',
                     name: '便民查询',
                     meta: {
@@ -138,21 +153,6 @@ const options = {
                             path: 'project',
                             name: '项目列表',
                             component: () => import('@/pages/list/ProjectList'),
-                        }
-                    ]
-                },
-                {
-                    path: 'images',
-                    name: '图片工具',
-                    meta: {
-                        icon: 'picture'
-                    },
-                    component: PageView,
-                    children: [
-                        {
-                            path: 'imagesRecognition',
-                            name: '获取图片信息',
-                            component: () => import('@/pages/images/ImagesRecognition'),
                         }
                     ]
                 }
