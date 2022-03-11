@@ -17,7 +17,7 @@ export default {
             title: '',
             description: '',
             content: '',
-            desc: '鸡汤虽然补！可不要贪碗哦。',
+            desc: '鸡汤虽然补！可不要贪碗哦。(请不要直接调用接口，已经做了1分钟缓存控制)',
             loading: false,
 
         }
@@ -29,7 +29,7 @@ export default {
         getContent() {
             this.loading=true
             poisonChickenSoup().then(reslut => {
-                this.content = reslut.data
+                this.content = reslut.data.data
                 this.loading= false
             })
         }
