@@ -1,7 +1,5 @@
-const BASE_URL = 'http://tina.tinaroot.cn/date/takeAHoliday/';
 const PY_API = 'http://py.tinaroot.cn/api/date/';
 import {request, METHOD} from '@/utils/request'
-
 
 
 /**
