@@ -47,6 +47,7 @@
 
 <script>
 import MiniArea from '../../../components/chart/MiniArea'
+import {imagesList} from '@/services/docker/index'
 
 const searchData = []
 for (let i = 0; i < 50; i++) {
@@ -88,7 +89,9 @@ export default {
   data () {
     return {
       searchData,
-      columns
+      columns,
+      imagesData:[],
+      imageName:''
     }
   },
   computed: {
@@ -97,6 +100,20 @@ export default {
       return columns.map(item => {
        item.title = this.$t(item.key)
         return item
+      })
+    }
+  },
+  created() {
+    this.getImagesList()
+  },
+  methods:{
+    getImagesList(){
+      const data={
+        'imageName':this.imageName,
+        'token':'00b6f1e5-5f05-4370-96ba-6a5a415641b5'
+      }
+      imagesList(data).then(reslut=>{
+        console.log(reslut)
       })
     }
   }
