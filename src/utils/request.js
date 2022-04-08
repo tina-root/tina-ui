@@ -1,9 +1,8 @@
 import axios from 'axios'
 import Cookie from 'js-cookie'
-
 // 跨域认证信息 header 名
 const xsrfHeaderName = 'Authorization'
-
+import Qs from 'qs'
 axios.defaults.timeout = 5000
 axios.defaults.withCredentials= true
 axios.defaults.xsrfHeaderName= xsrfHeaderName
@@ -23,6 +22,7 @@ const METHOD = {
   POST: 'post'
 }
 
+
 /**
  * axios请求
  * @param url 请求地址
@@ -35,7 +35,9 @@ async function request(url, method, params, config) {
     case METHOD.GET:
       return axios.get(url, {params, ...config})
     case METHOD.POST:
-      return axios.post(url, params, config)
+      axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+      return axios.post(url,   Qs.stringify(params),config
+    )
     default:
       return axios.get(url, {params, ...config})
   }

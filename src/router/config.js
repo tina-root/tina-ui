@@ -14,24 +14,29 @@ const options = {
             path: '/',
             name: '首页',
             component: TabsView,
-            redirect: '/dashboard/workplace',
+            redirect: '/dashboard/docker',
             children: [
                 {
                     path: 'dashboard',
-                    name: 'Dashboard',
+                    name: '控制台',
                     meta: {
                         icon: 'dashboard'
                     },
                     component: BlankView,
                     children: [
                         {
-                            path: 'workplace',
-                            name: '工作台',
+                            path: 'docker',
+                            name: 'Docker工作台',
                             meta: {
                                 page: {
                                     closable: false
                                 }
                             },
+                            component: () => import('@/pages/dashboard/docker/Docker'),
+                        },
+                        {
+                            path: 'workplace',
+                            name: '工作台',
                             component: () => import('@/pages/dashboard/analysis'),
                         }
                     ]
