@@ -60,6 +60,10 @@ const options = {
                     component: PageView,
                     children: [
                         {
+                            path: 'doc',
+                            name: '在线文档',
+                            component: () => ('http://docs.tinaroot.cn/#/'),
+                        },{
                             path: 'englishCaseConversion',
                             name: '英文大小写转换',
                             component: () => import('@/pages/text/EnglishCaseConversion.vue'),
